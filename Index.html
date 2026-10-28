@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="meta.title">FlowTech | Tecnología desde Puerto Rico</title>
+  <meta name="description" content="FlowTech es un estudio de tecnología en Puerto Rico que diseña y desarrolla apps, páginas web y videojuegos." />
+  <meta name="theme-color" content="#0a0a0c" />
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='26' fill='%23f04a1f'/%3E%3Cpath d='M26 33H59L76 50L59 67H26' fill='none' stroke='%230a0a0c' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='26' cy='33' r='9' fill='%230a0a0c'/%3E%3Ccircle cx='26' cy='67' r='9' fill='%230a0a0c'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Ícono de FlowTech reutilizable (recreado en SVG para que se vea nítido a cualquier tamaño) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="ft-mark" viewBox="0 0 100 100">
+      <rect width="100" height="100" rx="26" fill="var(--ft-accent)" />
+      <path d="M26 33H59L76 50L59 67H26" fill="none" stroke="var(--ft-bg)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+      <circle cx="26" cy="33" r="9" fill="var(--ft-bg)" />
+      <circle cx="26" cy="67" r="9" fill="var(--ft-bg)" />
+    </symbol>
+  </svg>
+
+  <!-- HEADER -->
+  <header class="ft-header" id="header">
+    <div class="ft-container ft-header-inner">
+      <a href="#top" class="ft-logo" aria-label="FlowTech">
+        <svg class="ft-logo-icon"><use href="#ft-mark" /></svg>
+        <span class="ft-logo-text">FlowTech</span>
+      </a>
+
+      <nav class="ft-nav" id="nav">
+        <a href="#about" data-i18n="nav.about">Nosotros</a>
+        <a href="#product" data-i18n="nav.product">Servicios</a>
+        <a href="#process" data-i18n="nav.process">Proceso</a>
+        <a href="#solutions" data-i18n="nav.solutions">Casos de uso</a>
+        <a href="#resources" data-i18n="nav.resources">Links</a>
+        <a href="#contact" class="ft-nav-mobile-only" data-i18n="nav.contact">Contacto</a>
+      </nav>
+
+      <div class="ft-header-actions">
+        <button id="lang-toggle" class="ft-btn-lang" aria-label="Cambiar idioma / Change language">EN</button>
+        <a href="#contact" class="ft-btn ft-btn-primary ft-btn-sm" data-i18n="nav.contact">Contacto</a>
+        <button class="ft-menu-toggle" id="menu-toggle" aria-label="Menú" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="ft-hero">
+      <div class="ft-hero-bg" aria-hidden="true"></div>
+      <div class="ft-container ft-hero-grid">
+        <div class="ft-hero-content">
+          <p class="ft-badge" data-reveal>
+            <span class="ft-badge-dot"></span>
+            <span data-i18n="hero.eyebrow">Estudio de tecnología · Puerto Rico</span>
+          </p>
+          <h1 data-reveal>
+            <span data-i18n="hero.title1">Construimos experiencias digitales que</span>
+            <span class="ft-gradient-text" data-i18n="hero.title2">fluyen.</span>
+          </h1>
+
+          <p class="ft-hero-description" data-reveal data-i18n="hero.description">
+            Diseñamos y desarrollamos aplicaciones móviles, páginas web modernas y
+            videojuegos con alto nivel de calidad y rendimiento.
+          </p>
+
+          <div class="ft-hero-actions" data-reveal>
+            <a href="#contact" class="ft-btn ft-btn-primary">
+              <span data-i18n="hero.btn.contact">Empieza tu proyecto</span>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-5 5 5-5 5" /></svg>
+            </a>
+            <a href="#product" class="ft-btn ft-btn-ghost" data-i18n="hero.btn.whatWeDo">Ver servicios</a>
+          </div>
+
+          <ul class="ft-hero-meta" data-reveal>
+            <li data-i18n="hero.meta.apps">Apps y páginas web</li>
+            <li data-i18n="hero.meta.games">Videojuegos interactivos</li>
+            <li data-i18n="hero.meta.tech">Hecho en Puerto Rico</li>
+          </ul>
+        </div>
+
+        <!-- Visual del hero: el ícono de FlowTech con el "flujo" animado -->
+        <div class="ft-hero-visual" data-reveal aria-hidden="true">
+          <div class="ft-hero-glow"></div>
+          <div class="ft-hero-panel">
+            <div class="ft-panel-bar">
+              <span></span><span></span><span></span>
+              <code>flowtech://build</code>
+            </div>
+            <svg class="ft-flow" viewBox="0 0 400 300">
+              <defs>
+                <linearGradient id="flowGrad" x1="0" x2="1">
+                  <stop offset="0" stop-color="#ff8a4c" />
+                  <stop offset="1" stop-color="#f04a1f" />
+                </linearGradient>
+              </defs>
+              <g class="ft-flow-grid">
+                <path d="M0 50H400M0 100H400M0 150H400M0 200H400M0 250H400M50 0V300M100 0V300M150 0V300M200 0V300M250 0V300M300 0V300M350 0V300" />
+              </g>
+              <path class="ft-flow-track" d="M70 100H230L290 150L230 200H70" />
+              <path class="ft-flow-line" d="M70 100H230L290 150L230 200H70" />
+              <circle class="ft-flow-node" cx="70" cy="100" r="18" />
+              <circle class="ft-flow-node" cx="70" cy="200" r="18" />
+              <circle class="ft-flow-pulse" cx="70" cy="100" r="18" />
+              <circle class="ft-flow-pulse ft-flow-pulse-2" cx="70" cy="200" r="18" />
+            </svg>
+            <div class="ft-panel-tags">
+              <span>Apps</span>
+              <span>Web</span>
+              <span>Games</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Franja de capacidades -->
+      <div class="ft-strip" aria-hidden="true">
+        <div class="ft-strip-track">
+          <span>iOS &amp; Android</span><i></i><span>Web Apps</span><i></i><span>APIs</span><i></i><span>UI / UX</span><i></i><span>Landing Pages</span><i></i><span>Game Dev</span><i></i><span>Prototipos</span><i></i><span>MVPs</span><i></i>
+          <span>iOS &amp; Android</span><i></i><span>Web Apps</span><i></i><span>APIs</span><i></i><span>UI / UX</span><i></i><span>Landing Pages</span><i></i><span>Game Dev</span><i></i><span>Prototipos</span><i></i><span>MVPs</span><i></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE FLOWTECH -->
+    <section id="about" class="ft-section">
+      <div class="ft-container ft-about-grid">
+        <div class="ft-section-header ft-section-header-left" data-reveal>
+          <p class="ft-eyebrow" data-i18n="about.eyebrow">Sobre nosotros</p>
+          <h2 data-i18n="about.title">Tecnología con detalle, desde el Caribe.</h2>
+          <p data-i18n="about.description">
+            FlowTech nace en Puerto Rico con la meta de crear productos digitales
+            que se sientan rápidos, pulidos y fáciles de usar, sin perder de vista
+            la creatividad y el detalle visual.
+          </p>
+        </div>
+
+        <div class="ft-about-cards">
+          <div class="ft-card ft-card-feature" data-reveal>
+            <span class="ft-card-index">01</span>
+            <h3 data-i18n="about.mission.title">Misión</h3>
+            <p data-i18n="about.mission.text">
+              Diseñar y desarrollar experiencias digitales —apps, webs y juegos—
+              que hagan que la tecnología se sienta natural y fluida para las
+              personas.
+            </p>
+          </div>
+          <div class="ft-card ft-card-feature" data-reveal>
+            <span class="ft-card-index">02</span>
+            <h3 data-i18n="about.vision.title">Visión</h3>
+            <p data-i18n="about.vision.text">
+              Convertirnos en uno de los estudios de tecnología y creatividad
+              más reconocidos del Caribe, llevando productos desde Puerto Rico
+              al mundo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTO / QUÉ HACEMOS -->
+    <section id="product" class="ft-section ft-section-alt">
+      <div class="ft-container">
+        <div class="ft-section-header" data-reveal>
+          <p class="ft-eyebrow" data-i18n="product.eyebrow">Servicios</p>
+          <h2 data-i18n="product.title">Qué hacemos</h2>
+          <p data-i18n="product.description">
+            Desarrollamos soluciones digitales a la medida: desde la idea y el
+            diseño, hasta el código y el lanzamiento.
+          </p>
+        </div>
+
+        <div class="ft-grid-3">
+          <article class="ft-card ft-service" data-reveal>
+            <div class="ft-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5" /><path d="M11 18.5h2" /></svg>
+            </div>
+            <h3 data-i18n="product.apps.title">Aplicaciones &amp; APIs</h3>
+            <p data-i18n="product.apps.text">
+              Desarrollo de aplicaciones móviles y web, con APIs bien diseñadas,
+              performance estable y experiencias modernas.
+            </p>
+            <ul class="ft-service-list">
+              <li data-i18n="product.apps.l1">iOS, Android y web</li>
+              <li data-i18n="product.apps.l2">Backends y APIs REST</li>
+              <li data-i18n="product.apps.l3">Integraciones y pagos</li>
+            </ul>
+          </article>
+
+          <article class="ft-card ft-service" data-reveal>
+            <div class="ft-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4" width="19" height="16" rx="2.5" /><path d="M2.5 8.5h19M6 6.3h.01M8.5 6.3h.01" /></svg>
+            </div>
+            <h3 data-i18n="product.web.title">Webs y plataformas</h3>
+            <p data-i18n="product.web.text">
+              Sitios y paneles de administración con diseño profesional,
+              animaciones suaves y enfoque en usabilidad.
+            </p>
+            <ul class="ft-service-list">
+              <li data-i18n="product.web.l1">Landing pages y sitios</li>
+              <li data-i18n="product.web.l2">Dashboards y paneles</li>
+              <li data-i18n="product.web.l3">SEO y rendimiento</li>
+            </ul>
+          </article>
+
+          <article class="ft-card ft-service" data-reveal>
+            <div class="ft-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 7h9a5 5 0 0 1 4.9 6l-.8 3.8a2.4 2.4 0 0 1-4.2 1L14.6 16H9.4l-1.8 1.8a2.4 2.4 0 0 1-4.2-1L2.6 13a5 5 0 0 1 4.9-6Z" /><path d="M8 10v3M6.5 11.5h3M15.5 11h.01M17.5 12.5h.01" /></svg>
+            </div>
+            <h3 data-i18n="product.games.title">Videojuegos &amp; experiencias</h3>
+            <p data-i18n="product.games.text">
+              Prototipos de juegos, experiencias interactivas y proyectos
+              creativos para marcas o entretenimiento.
+            </p>
+            <ul class="ft-service-list">
+              <li data-i18n="product.games.l1">Prototipos jugables</li>
+              <li data-i18n="product.games.l2">Experiencias para marcas</li>
+              <li data-i18n="product.games.l3">Arte y storytelling</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESO -->
+    <section id="process" class="ft-section">
+      <div class="ft-container">
+        <div class="ft-section-header" data-reveal>
+          <p class="ft-eyebrow" data-i18n="process.eyebrow">Proceso</p>
+          <h2 data-i18n="process.title">De la idea al lanzamiento</h2>
+          <p data-i18n="process.description">
+            Un proceso claro y colaborativo para que siempre sepas en qué etapa
+            está tu proyecto.
+          </p>
+        </div>
+
+        <ol class="ft-steps">
+          <li class="ft-step" data-reveal>
+            <span class="ft-step-num">01</span>
+            <h3 data-i18n="process.s1.title">Descubrimiento</h3>
+            <p data-i18n="process.s1.text">Entendemos tu idea, tus usuarios y tus metas.</p>
+          </li>
+          <li class="ft-step" data-reveal>
+            <span class="ft-step-num">02</span>
+            <h3 data-i18n="process.s2.title">Diseño</h3>
+            <p data-i18n="process.s2.text">Wireframes y prototipos visuales antes de escribir código.</p>
+          </li>
+          <li class="ft-step" data-reveal>
+            <span class="ft-step-num">03</span>
+            <h3 data-i18n="process.s3.title">Desarrollo</h3>
+            <p data-i18n="process.s3.text">Construimos por etapas, con demos frecuentes.</p>
+          </li>
+          <li class="ft-step" data-reveal>
+            <span class="ft-step-num">04</span>
+            <h3 data-i18n="process.s4.title">Lanzamiento</h3>
+            <p data-i18n="process.s4.text">Publicamos, medimos y seguimos mejorando.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- SOLUCIONES / CASOS DE USO -->
+    <section id="solutions" class="ft-section ft-section-alt">
+      <div class="ft-container">
+        <div class="ft-section-header" data-reveal>
+          <p class="ft-eyebrow" data-i18n="solutions.eyebrow">Para quién</p>
+          <h2 data-i18n="solutions.title">Casos de uso</h2>
+          <p data-i18n="solutions.description">
+            Adaptamos la tecnología de FlowTech a distintos tipos de proyectos
+            y equipos.
+          </p>
+        </div>
+
+        <div class="ft-grid-3">
+          <div class="ft-card ft-usecase" data-reveal>
+            <span class="ft-tag" data-i18n="solutions.startups.tag">MVP</span>
+            <h3 data-i18n="solutions.startups.title">Startups &amp; emprendedores</h3>
+            <p data-i18n="solutions.startups.text">
+              MVPs rápidos, landing pages y prototipos interactivos para validar
+              ideas sin perder calidad visual.
+            </p>
+          </div>
+          <div class="ft-card ft-usecase" data-reveal>
+            <span class="ft-tag" data-i18n="solutions.brands.tag">Marca</span>
+            <h3 data-i18n="solutions.brands.title">Empresas y marcas</h3>
+            <p data-i18n="solutions.brands.text">
+              Webs, micrositios y experiencias interactivas que refuerzan la
+              identidad de marca.
+            </p>
+          </div>
+          <div class="ft-card ft-usecase" data-reveal>
+            <span class="ft-tag" data-i18n="solutions.creative.tag">Creativo</span>
+            <h3 data-i18n="solutions.creative.title">Proyectos creativos</h3>
+            <p data-i18n="solutions.creative.text">
+              Videojuegos, experiencias inmersivas y proyectos experimentales
+              con foco en arte y storytelling.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECURSOS / LINKS -->
+    <!-- TODO: cambiar los href="#" por los enlaces reales (web principal, portafolio, GitHub, blog) -->
+    <section id="resources" class="ft-section">
+      <div class="ft-container">
+        <div class="ft-section-header" data-reveal>
+          <p class="ft-eyebrow" data-i18n="resources.eyebrow">Recursos</p>
+          <h2 data-i18n="resources.title">Links oficiales</h2>
+          <p data-i18n="resources.description">
+            Explora nuestro trabajo, código y lo que estamos construyendo.
+          </p>
+        </div>
+
+        <div class="ft-links-grid">
+          <a href="#" class="ft-link-card" data-reveal>
+            <span class="ft-link-label" data-i18n="resources.main">Sitio principal</span>
+            <span class="ft-link-url">flowtech.pr</span>
+            <svg class="ft-link-arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M6 14 14 6M7 6h7v7" /></svg>
+          </a>
+          <a href="#" class="ft-link-card" data-reveal>
+            <span class="ft-link-label" data-i18n="resources.portfolio">Portafolio</span>
+            <span class="ft-link-url">projects.flowtech.pr</span>
+            <svg class="ft-link-arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M6 14 14 6M7 6h7v7" /></svg>
+          </a>
+          <a href="#" class="ft-link-card" data-reveal>
+            <span class="ft-link-label">GitHub</span>
+            <span class="ft-link-url">github.com/flowtech</span>
+            <svg class="ft-link-arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M6 14 14 6M7 6h7v7" /></svg>
+          </a>
+          <a href="#" class="ft-link-card" data-reveal>
+            <span class="ft-link-label" data-i18n="resources.blog">Dev Blog</span>
+            <span class="ft-link-url">dev.flowtech.pr</span>
+            <svg class="ft-link-arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M6 14 14 6M7 6h7v7" /></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contact" class="ft-section ft-section-contact">
+      <div class="ft-container">
+        <div class="ft-contact-shell" data-reveal>
+          <div class="ft-contact-info">
+            <p class="ft-eyebrow" data-i18n="contact.eyebrow">Contacto</p>
+            <h2 data-i18n="contact.title">Conversemos</h2>
+            <p class="ft-contact-lead" data-i18n="contact.description">
+              ¿Tienes una idea de app, página web o juego? Escríbenos y vemos
+              cómo llevarla a producción.
+            </p>
+
+            <ul class="ft-contact-details">
+              <li>
+                <span class="ft-contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5" /><path d="m4 7 8 6 8-6" /></svg></span>
+                <div>
+                  <span class="ft-contact-label" data-i18n="contact.email.label">Correo</span>
+                  <a href="mailto:contacto@flowtech.pr">contacto@flowtech.pr</a>
+                </div>
+              </li>
+              <li>
+                <span class="ft-contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5a7 7 0 0 0-14 0C5 14.8 12 21 12 21Z" /><circle cx="12" cy="9.5" r="2.5" /></svg></span>
+                <div>
+                  <span class="ft-contact-label" data-i18n="contact.location.label">Ubicación</span>
+                  <span data-i18n="contact.location.value">Puerto Rico</span>
+                </div>
+              </li>
+              <li>
+                <span class="ft-contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg></span>
+                <div>
+                  <span class="ft-contact-label" data-i18n="contact.hours.label">Horario</span>
+                  <span data-i18n="contact.hours.value">Lunes a Viernes · 9:00 AM – 6:00 PM</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- El formulario abre el correo del visitante con el mensaje listo (mailto). Se puede conectar a un backend o servicio de forms después. -->
+          <form class="ft-contact-form" id="contact-form">
+            <div class="ft-form-row">
+              <label>
+                <span data-i18n="contact.form.name">Nombre</span>
+                <input type="text" name="nombre" required data-i18n-placeholder="contact.form.namePlaceholder" placeholder="Tu nombre" />
+              </label>
+              <label>
+                <span data-i18n="contact.form.email">Email</span>
+                <input type="email" name="email" required placeholder="tu@email.com" />
+              </label>
+            </div>
+            <fieldset class="ft-chips">
+              <legend data-i18n="contact.form.project">Tipo de proyecto</legend>
+              <label><input type="radio" name="tipo" value="App" checked /><span>App</span></label>
+              <label><input type="radio" name="tipo" value="Web" /><span>Web</span></label>
+              <label><input type="radio" name="tipo" value="Videojuego" /><span data-i18n="contact.form.typeGame">Videojuego</span></label>
+              <label><input type="radio" name="tipo" value="Otro" /><span data-i18n="contact.form.typeOther">Otro</span></label>
+            </fieldset>
+            <label>
+              <span data-i18n="contact.form.message">Mensaje</span>
+              <textarea name="mensaje" rows="4" required data-i18n-placeholder="contact.form.messagePlaceholder" placeholder="Cuéntanos brevemente tu idea."></textarea>
+            </label>
+            <button type="submit" class="ft-btn ft-btn-primary ft-btn-block">
+              <span data-i18n="contact.form.submit">Enviar mensaje</span>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-5 5 5-5 5" /></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="ft-footer">
+    <div class="ft-container ft-footer-inner">
+      <div class="ft-footer-left">
+        <a href="#top" class="ft-logo" aria-label="FlowTech">
+          <svg class="ft-logo-icon"><use href="#ft-mark" /></svg>
+          <span class="ft-logo-text">FlowTech</span>
+        </a>
+        <span class="ft-footer-copy">
+          © <span id="year"></span> FlowTech. <span data-i18n="footer.rights">Todos los derechos reservados.</span>
+        </span>
+      </div>
+
+      <!-- Cambia los # por las redes reales -->
+      <div class="ft-footer-links">
+        <a href="#">LinkedIn</a>
+        <a href="#">X</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
