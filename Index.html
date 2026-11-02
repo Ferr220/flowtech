@@ -382,8 +382,10 @@
             </ul>
           </div>
 
-          <!-- El formulario abre el correo del visitante con el mensaje listo (mailto). Se puede conectar a un backend o servicio de forms después. -->
+          <!-- El formulario envía el mensaje directamente con FormSubmit (ver CONTACT_ENDPOINT en script.js). -->
           <form class="ft-contact-form" id="contact-form">
+            <!-- Campo trampa para bots: las personas no lo ven ni lo llenan -->
+            <input type="text" name="_honey" class="ft-form-honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
             <div class="ft-form-row">
               <label>
                 <span data-i18n="contact.form.name">Nombre</span>
@@ -409,6 +411,7 @@
               <span data-i18n="contact.form.submit">Enviar mensaje</span>
               <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-5 5 5-5 5" /></svg>
             </button>
+            <p class="ft-form-status" id="contact-status" role="status" hidden></p>
           </form>
         </div>
       </div>

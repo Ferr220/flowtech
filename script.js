@@ -124,6 +124,9 @@ const translations = {
         message: "Mensaje",
         messagePlaceholder: "Cuéntanos brevemente tu idea.",
         submit: "Enviar mensaje",
+        sending: "Enviando...",
+        success: "¡Mensaje enviado! Te responderemos pronto.",
+        error: "No se pudo enviar el mensaje. Inténtalo de nuevo o escríbenos a flowtech025@gmail.com.",
         subject: "Nuevo proyecto"
       }
     },
@@ -251,6 +254,9 @@ const translations = {
         message: "Message",
         messagePlaceholder: "Tell us briefly about your idea.",
         submit: "Send message",
+        sending: "Sending...",
+        success: "Message sent! We'll get back to you soon.",
+        error: "The message couldn't be sent. Try again or email us at flowtech025@gmail.com.",
         subject: "New project"
       }
     },
@@ -394,12 +400,62 @@ document.querySelectorAll(".ft-service").forEach((card) => {
 });
 
 // =========================
-// Formulario de contacto: abre el correo con el mensaje listo
+// Formulario de contacto: envía el mensaje con FormSubmit, sin abrir el correo del visitante
 // =========================
-document.getElementById("contact-form").addEventListener("submit", (e) => {
+const CONTACT_ENDPOINT = "https://formsubmit.co/ajax/flowtech025@gmail.com";
+const contactForm = document.getElementById("contact-form");
+const contactStatus = document.getElementById("contact-status");
+const contactSubmitLabel = contactForm.querySelector('button[type="submit"] span');
+
+// Se usa data-i18n para que el texto también cambie al cambiar de idioma
+function setI18nText(element, key) {
+  element.setAttribute("data-i18n", key);
+  element.textContent = getNestedValue(translations[currentLang], key);
+}
+
+function showContactStatus(type) {
+  contactStatus.hidden = false;
+  contactStatus.className = `ft-form-status is-${type}`;
+  setI18nText(contactStatus, `contact.form.${type}`);
+}
+
+contactForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const data = new FormData(e.target);
+  const submitButton = contactForm.querySelector('button[type="submit"]');
+  const data = new FormData(contactForm);
   const subject = `${getNestedValue(translations[currentLang], "contact.form.subject")} (${data.get("tipo")}) – ${data.get("nombre")}`;
-  const body = `${data.get("mensaje")}\n\n— ${data.get("nombre")} · ${data.get("email")}`;
-  window.location.href = `mailto:contacto@flowtech.pr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  submitButton.disabled = true;
+  contactStatus.hidden = true;
+  setI18nText(contactSubmitLabel, "contact.form.sending");
+
+  try {
+    const response = await fetch(CONTACT_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        nombre: data.get("nombre"),
+        email: data.get("email"),
+        tipo: data.get("tipo"),
+        mensaje: data.get("mensaje"),
+        _honey: data.get("_honey"),
+        _subject: subject,
+        _replyto: data.get("email"),
+        _template: "table"
+      })
+    });
+    const result = await response.json();
+    // FormSubmit devuelve success como texto ("true") y usa "false" si el correo aún no está activado
+    if (!response.ok || String(result.success) !== "true") {
+      throw new Error(result.message || "FormSubmit error");
+    }
+    contactForm.reset();
+    showContactStatus("success");
+  } catch (err) {
+    console.error(err);
+    showContactStatus("error");
+  } finally {
+    submitButton.disabled = false;
+    setI18nText(contactSubmitLabel, "contact.form.submit");
+  }
 });

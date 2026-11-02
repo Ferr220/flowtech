@@ -1056,6 +1056,38 @@ a {
   margin-top: 6px;
 }
 
+.ft-contact-form .ft-btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.ft-form-honey {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.ft-form-status {
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid var(--ft-border-strong);
+  border-radius: var(--ft-radius-sm);
+  font-size: 0.9rem;
+  color: var(--ft-text);
+}
+
+.ft-form-status.is-success {
+  border-color: rgba(74, 222, 128, 0.5);
+  background: rgba(74, 222, 128, 0.1);
+}
+
+.ft-form-status.is-error {
+  border-color: var(--ft-accent);
+  background: var(--ft-accent-soft);
+}
+
 /* =========================
    FOOTER
    ========================= */

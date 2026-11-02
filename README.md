@@ -21,7 +21,7 @@ Otras funciones:
 - **Bilingüe (ES / EN):** el botón del header cambia el idioma de toda la página y recuerda la elección del visitante.
 - **Responsive:** se adapta a escritorio, tablet y celular, con menú hamburguesa en pantallas pequeñas.
 - **Animaciones:** las secciones aparecen suavemente al hacer scroll. Si el visitante tiene activada la opción de reducir movimiento en su sistema, las animaciones se desactivan.
-- **Formulario de contacto:** al enviarlo se abre el programa de correo del visitante con el mensaje ya escrito para `contacto@flowtech.pr`.
+- **Formulario de contacto:** envía el mensaje directamente a `flowtech025@gmail.com` por medio de [FormSubmit](https://formsubmit.co), sin abrir el programa de correo del visitante. La primera vez que se usa, FormSubmit manda un correo de activación a esa dirección y hay que confirmarlo.
 
 ## Estructura del proyecto
 
@@ -89,7 +89,6 @@ El ícono de FlowTech está dibujado en SVG dentro de `Index.html`, en el `<symb
 - [ ] Cambiar los `href="#"` de la sección **Links** por los enlaces reales.
 - [ ] Cambiar los `href="#"` del footer por las redes reales (LinkedIn, X, Instagram).
 - [ ] Revisar los textos de **Proceso** y de los puntos de cada servicio.
-- [ ] Conectar el formulario a un servicio de formularios (por ejemplo Formspree) o a un backend, para no depender del programa de correo del visitante.
 - [ ] Agregar una sección de proyectos o portafolio.
 - [ ] Publicar la página (GitHub Pages, Netlify o Vercel).
 
