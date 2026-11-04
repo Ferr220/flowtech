@@ -126,8 +126,7 @@ const translations = {
         submit: "Enviar mensaje",
         sending: "Enviando...",
         success: "¡Mensaje enviado! Te responderemos pronto.",
-        error: "No se pudo enviar el mensaje. Inténtalo de nuevo o escríbenos a flowtech025@gmail.com.",
-        subject: "Nuevo proyecto"
+        error: "No se pudo enviar el mensaje. Inténtalo de nuevo o escríbenos a flowtech025@gmail.com."
       }
     },
     footer: {
@@ -256,8 +255,7 @@ const translations = {
         submit: "Send message",
         sending: "Sending...",
         success: "Message sent! We'll get back to you soon.",
-        error: "The message couldn't be sent. Try again or email us at flowtech025@gmail.com.",
-        subject: "New project"
+        error: "The message couldn't be sent. Try again or email us at flowtech025@gmail.com."
       }
     },
     footer: {
@@ -400,9 +398,9 @@ document.querySelectorAll(".ft-service").forEach((card) => {
 });
 
 // =========================
-// Formulario de contacto: envía el mensaje con FormSubmit, sin abrir el correo del visitante
+// Formulario de contacto: envía el mensaje a la función de servidor (api/contact.mjs), que usa Resend
 // =========================
-const CONTACT_ENDPOINT = "https://formsubmit.co/ajax/flowtech025@gmail.com";
+const CONTACT_ENDPOINT = "/api/contact";
 const contactForm = document.getElementById("contact-form");
 const contactStatus = document.getElementById("contact-status");
 const contactSubmitLabel = contactForm.querySelector('button[type="submit"] span');
@@ -423,7 +421,6 @@ contactForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const submitButton = contactForm.querySelector('button[type="submit"]');
   const data = new FormData(contactForm);
-  const subject = `${getNestedValue(translations[currentLang], "contact.form.subject")} (${data.get("tipo")}) – ${data.get("nombre")}`;
 
   submitButton.disabled = true;
   contactStatus.hidden = true;
@@ -432,22 +429,17 @@ contactForm.addEventListener("submit", async (e) => {
   try {
     const response = await fetch(CONTACT_ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         nombre: data.get("nombre"),
         email: data.get("email"),
         tipo: data.get("tipo"),
         mensaje: data.get("mensaje"),
-        _honey: data.get("_honey"),
-        _subject: subject,
-        _replyto: data.get("email"),
-        _template: "table"
+        _honey: data.get("_honey")
       })
     });
-    const result = await response.json();
-    // FormSubmit devuelve success como texto ("true") y usa "false" si el correo aún no está activado
-    if (!response.ok || String(result.success) !== "true") {
-      throw new Error(result.message || "FormSubmit error");
+    if (!response.ok) {
+      throw new Error(`Contact form error: ${response.status}`);
     }
     contactForm.reset();
     showContactStatus("success");
