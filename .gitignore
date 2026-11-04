@@ -1,0 +1,7 @@
+# Claves y variables de entorno
+.env
+.env.*
+!.env.example
+
+# Vercel
+.vercel

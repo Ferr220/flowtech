@@ -382,7 +382,7 @@
             </ul>
           </div>
 
-          <!-- El formulario envía el mensaje directamente con FormSubmit (ver CONTACT_ENDPOINT en script.js). -->
+          <!-- El formulario envía el mensaje a api/contact.mjs, que lo manda por email con Resend (ver CONTACT_ENDPOINT en script.js). -->
           <form class="ft-contact-form" id="contact-form">
             <!-- Campo trampa para bots: las personas no lo ven ni lo llenan -->
             <input type="text" name="_honey" class="ft-form-honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
